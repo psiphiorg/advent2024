@@ -7,6 +7,7 @@ I'll mostly be using Perl, or occasionally Excel (or Google Sheets) if things ar
 
 | Day |      Time |  Rank | Score |      Time |  Rank | Score |
 | --- | --------- | ----- | ----- | --------- | ----- | ----- |
+|   3 |  00:12:46 |  5495 |     0 |  00:35:31 |  7051 |     0 |
 |   2 |  01:01:30 | 14309 |     0 |  01:10:49 |  9529 |     0 |
 |   1 |  05:42:01 | 31760 |     0 |  05:46:44 | 29346 |     0 |
 
