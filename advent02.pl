@@ -25,7 +25,6 @@ sub is_safe(@) {
   my $inc = 0;
   my $dec = 0;
   my $same = 0;
-  my $close = 1;
 
   my $last = shift; # Get the first digit from the line and store that as "last", which we will
                     # compare against.  This also removes it from the list so we don't double-count.
@@ -33,15 +32,15 @@ sub is_safe(@) {
     $inc++ if $_ > $last; # If the new number is bigger than the last, then we have an increase
     $dec++ if $_ < $last; # If the new number is smaller than the last, then we have a decrease
     $same++ if $_ == $last; # If the two numbers are the same, we have a same
-    $close = 0 if abs($_ - $last) > 3; # If the two numbers are farther apart than 3, then we are not close.
+    return 0 if abs($_ - $last) > 3; # If the two numbers are farther apart than 3, then the line is not safe
     $last = $_; # Replace the last digit with this one so we will compare against it next time
   }
 
   # If we're still close, we don't stay the same, and either we only increase or only decrease, then this is good.
-  return $close && !$same && ($inc xor $dec);
+  return !$same && ($inc xor $dec);
 }
 
-# A line is "safe if altered" if removing a single digit could be result in a line that is "safe".
+# A line is "safe if altered" if removing a single number could be result in a line that is "safe".
 
 sub is_safe_altered(@) {
   for my $i (0..$#_) { # For each position in the original array (zero-based)
